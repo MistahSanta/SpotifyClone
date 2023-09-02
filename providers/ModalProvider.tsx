@@ -2,33 +2,26 @@
 
 import { useEffect, useState } from "react";
 
-import Modal from "@/components/Model";
+import AuthModal from "@/components/AuthModal";
 
 
 const ModalProvider = () => {
+
+    // Cool trick to ensure no hydration error
     const [isMounted, setIsMounted] = useState(false);
 
     //Trick to ensure that the code is being rendered only by client and not by the server
-    useEffect( () => {
-        setIsMounted(true);
-    }, []);
+    useEffect( () => { setIsMounted(true); }, []);
 
     if (!isMounted) {
+        // Whatever is being render is being render on the server - so return null
         return null;
     }
 
     return (
-        <>
-            <Modal 
-             title="Test Modal"
-             desc="Test description"
-             isOpen
-             onChange={() => {}}
-
-             >
-                Test Children
-            </Modal>
-        </>
+        
+            <AuthModal />
+        
     )
 }
 

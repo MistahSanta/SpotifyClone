@@ -5,16 +5,16 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import Button from "./Button";
-
-
+import useAuthModal from "@/hooks/useAuthModal";
 
 interface HeaderProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({children, className}) => {
+const Header: React.FC<HeaderProps> = ({ children, className }) => {
   const router = useRouter();
+  const authModal = useAuthModal();
 
   const handleLogout = () => {
     //Handle logout in the future
@@ -40,8 +40,6 @@ const Header: React.FC<HeaderProps> = ({children, className}) => {
              flex
              items-center
              justify-between
-
-
             "
       >
         <div
@@ -69,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({children, className}) => {
           </button>
 
           <button
-            onClick={() => router.forward()}
+            onClick={ () => router.forward()}
             className="
                      rounded-full
                      bg-black
@@ -123,35 +121,33 @@ const Header: React.FC<HeaderProps> = ({children, className}) => {
                  gap-x-4
                 "
         >
-            <>
-                <div>
-                    <Button
-                    onClick={() => {}}
-                     className="
+          <>
+            <div>
+              <Button
+                onClick={ authModal.onOpen }
+                className="
                       bg-transparent
                       text-neutral-300
                       font=medium
                      "
-                    >
-                        Sign up
-                    </Button>
-                </div>
-                <div>
-                    <Button
-                    onClick={() => {}}
-                     className="
+              >
+                Sign up
+              </Button>
+            </div>
+            <div>
+              <Button
+                onClick={() => {}}
+                className="
                       bg-white
                       px-6
                       py-2
                      "
-                    >
-                        Log in
-                    </Button>
-                </div>
-            </>
-
+              >
+                Log in
+              </Button>
+            </div>
+          </>
         </div>
-        
       </div>
       {children}
     </div>

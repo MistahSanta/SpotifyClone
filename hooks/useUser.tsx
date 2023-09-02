@@ -1,3 +1,5 @@
+// useUser will be used to hold user subscription
+
 import { Subscription, UserDetails } from "@/types";
 import { 
     useSessionContext, 
@@ -13,12 +15,11 @@ type UserContextType ={
     userDetails: UserDetails | null;
     isLoading: boolean;
     subscription: Subscription | null;
+    
 };
 
 
-export const UserContext = createContext<UserContextType | undefined>(
-    undefined
-);
+export const UserContext = createContext<UserContextType | undefined>(undefined);
 
 
 export interface Props {

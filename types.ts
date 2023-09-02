@@ -55,3 +55,11 @@ export interface Price {
     metadata?: Stripe.Metadata;
     products?: CSSMathProduct;
 }
+
+
+
+
+
+
+
+
